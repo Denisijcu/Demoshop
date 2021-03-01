@@ -1,0 +1,84 @@
+const ssID = "108Rnzw7EhhlhxF-7Neeoeoeoe";
+
+class DBShop{
+ 
+  constructor(){}
+ 
+  getUsers(){
+    
+     let users = [];
+     let user = new User();
+
+     const shUsers = SpreadsheetApp.openById(ssID).getSheetByName("Users");
+
+     let dataUsers = shUsers.getDataRange().getValues().slice(1);
+
+     dataUsers.map(_user => {
+          user = {
+               userEmail: _user[0],
+               name: _user[1],
+               lastName: _user[2],
+               phone: _user[3],
+               address: _user[4],
+               registeredDate: _user[5],
+               photo: _user[6]
+          };
+
+          users.push(user);
+     });
+
+     return users;
+  }
+
+  getItems(){
+    
+    let items = [];
+
+    let item = new Item();
+
+    const shItems = SpreadsheetApp.openById(ssID).getSheetByName("Items");
+
+    let _items = shItems.getDataRange().getValues().slice(1);
+
+    _items.map(_item => {
+      if(_item[0] !==''){
+         item= {
+           itemId: _item[0],
+           category: _item[1],
+           title: _item[2],
+           description: _item[3],
+           price: _item[4],
+           units: _item[5],
+           amount: _item[6],
+           image: _item[7],
+           like: _item[7],
+           url: _item[9]
+         };
+
+         items.push(item);
+
+      }
+    });
+
+    return items;
+
+  }
+
+  addPurchase(cart){
+
+     const shOrders = SpreadsheetApp.openById(ssID).getSheetByName("Orders"); 
+   
+    let CartId = new Date().getMinutes();
+    let email = Session.getEffectiveUser().getEmail();
+
+    for(let i=0; i<=cart.length-1; i++){
+
+     var purchase = [CartId, cart[i].itemId, email, cart[i].category, cart[i].title, cart[i].description, cart[i].price, cart[i].units,
+                  cart[i].amount, cart[i].url, Date(), 'n/a'];
+   
+     shOrders.appendRow(purchase);
+
+    }
+
+  }
+}

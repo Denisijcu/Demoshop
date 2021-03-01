@@ -1,0 +1,60 @@
+<script>
+
+
+let items = db[1];
+
+cart = [];
+
+let itemsFilters = [];
+
+// UI //
+const cartIcon = document.querySelector("#cartIcon");
+const categ = document.getElementById("categories");
+
+let arrCategories = [];
+
+items.forEach(e => { arrCategories.push(e.category); });
+
+let categories = new Set([...arrCategories]);
+
+const init = () => {
+   let l = '';
+   let arr = [];
+   categories.forEach(m => arr.push(m));
+   arr.sort().forEach(cat => {
+      l += ` <a href="#" onClick='fnCat("${cat}")' class="w3-bar-item w3-button">${cat}</a>`;
+      fnCat(cat);
+   });
+
+   fnCat("All");
+   categ.innerHTML = l;
+}
+
+
+/*** Views ***/
+
+// include f-showMain-view here //
+// include f-showDetail-view here //
+
+
+/** Controllers ***/
+
+// include f-cartIcon-controller here //
+
+// include f-findFilter-controller here //
+
+// include f-shopNow-controller here //
+
+// include f-addItem-controllere here //
+
+// include f-checkout-controller here //
+
+// include f-input search controler  here //
+
+// Include f-m-item.html //
+
+window.addEventListener('load', init, true);
+
+
+</script>
+

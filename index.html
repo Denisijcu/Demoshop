@@ -1,0 +1,63 @@
+<script>
+     let db = <?!= JSON.stringify(data) ?>; 
+    
+</script>
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_self">
+
+    <?!= include('style-css'); ?> 
+
+  </head>
+
+  <body>
+      
+     <!---Header -->
+     <?!= include('header-view'); ?>
+
+
+     <!---Content Grid -->
+     <?!= include('main-view'); ?> 
+
+
+     <!---Footer -->
+     <?!= include('footer-view'); ?>
+
+
+
+     <?!= include('main-controller-js'); ?>
+
+
+
+     <!-- VIEWS --> 
+          
+          // next here 
+          
+     <?!= include('f-showMain-view'); ?>
+     
+     <?!= include('f-showDetail-view'); ?>
+
+
+    
+
+
+     <!-- CONTROLLERS --> 
+
+     <?!= include('f-cartIcon-controller'); ?>
+
+     <?!= include('f-findFilter-controller'); ?>
+
+     <?!= include('f-shopNow-controller'); ?>
+
+     <?!= include('f-addItem-controller'); ?>
+   
+     <?!= include('f-checkout-controller'); ?>
+
+     <?!= include('f-input-search-controller'); ?> 
+
+     <?!= include('f-m-item'); ?>
+
+  </body>
+</html>

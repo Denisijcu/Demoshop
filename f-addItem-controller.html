@@ -1,0 +1,20 @@
+<script>
+
+//itemId,	category,	title,	description,	price,	units,	amount,	image,	like, url,	purchased
+/* Function Add item to the cart */
+
+function addItem(itemId,category,title,description,price,units, like, url, status){
+
+   let item = new Item(itemId,category,title,description,price,1, price*units, null, like, url ,null, status);
+
+   cart.push(item);
+   
+   document.querySelector("#id01").style.display = 'none';
+
+   document.querySelector("#cartIcon").style.color='red';
+  
+   document.querySelector("#itemsCart").innerHTML = `<span class="w3-badge" style="font-size:14px; color:white;font-weight:bold;">${cart.length}</span>`;
+
+}
+
+</script>

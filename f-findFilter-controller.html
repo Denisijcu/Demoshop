@@ -1,0 +1,37 @@
+<script>
+
+/*  Functions Seccions */
+
+function fnCat(cat) {
+
+   let showLabel = cat !== 'All' ? cat : '';
+
+   //Show the label buy Category
+   document.querySelector("#show_category").innerHTML = showLabel;
+
+
+   // hide the search input 
+   document.getElementById("search").style.display = 'none';
+
+
+   if (cat === "All") {
+
+      itemsFilters = items;
+
+   } else {
+
+      itemsFilters = items.filter((items) => items.category === cat);
+
+      if (itemsFilters[0].category !== '') {
+         let image = document.querySelector("#main-image");
+         image.src = `${itemsFilters[0].url}`;
+      }
+
+   }
+
+   document.getElementById("itemsCount").innerText = itemsFilters.length+ ' Items';
+
+   showView();
+
+}
+</script>

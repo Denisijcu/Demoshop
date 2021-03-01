@@ -1,0 +1,42 @@
+/* Code.gs */
+const DB = [];
+
+
+function doGet(){
+
+  let template = HtmlService.createTemplateFromFile('index');
+  template.data = getBD();
+
+  return template.evaluate().setTitle('DEMOSHOP').setSandboxMode(HtmlService.SandboxMode.IFRAME);
+  
+}
+const include = (fileName)=> HtmlService.createHtmlOutputFromFile(fileName).getContent();
+
+
+
+function getBD(){
+ 
+  dBShop = new DBShop();
+ 
+  DB.push(dBShop.getUsers());
+ 
+  DB.push(dBShop.getItems());
+ 
+  return DB;
+}
+
+//addPorchase() come from the front-end
+
+function addPurchase(cart){
+
+  dBShop = new DBShop();
+
+  dBShop.addPurchase(cart);
+
+}
+
+
+function getUser(){
+  var email = Session.getEffectiveUser().getEmail();
+}
+

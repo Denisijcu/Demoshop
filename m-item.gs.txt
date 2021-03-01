@@ -1,0 +1,15 @@
+class Item{
+  constructor(itemId,	category,	title,	description,	price,	units,	amount,	image,	like, url,	purchased){
+    this.itemId = itemId;
+    this.category = category;
+    this.title = title;
+    this.decription = description;
+    this.price = price;
+    this.units = units;
+    this.amount = amount;
+    this.image = image;
+    this.like = like;
+    this.url = url;
+    this.purchased = purchased;
+  }
+}

@@ -1,0 +1,18 @@
+<script>
+
+    function fnCheckOut(cart){
+    // sending purchas to the backend
+      google.script.run.withSuccessHandler(success).addPurchase(cart);
+      
+    }
+
+    function success(){
+      
+      document.querySelector("#id01").style.display = 'none';
+      document.querySelector("#cartIcon").style.color='black';
+      document.getElementById('id01').innerHTML = '<p> No Items Found !!! </p>';
+      cart.splice(0,cart.length);
+      document.querySelector("#itemsCart").innerHTML = '';
+    }
+
+</script>

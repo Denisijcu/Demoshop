@@ -1,0 +1,12 @@
+class User{
+  constructor(userEmail,name,lastName,phone,address,registeredDate,photo){
+    this.userEmail = userEmail;
+    this.name = name;
+    this.lastName = lastName;
+    this.phone = phone;
+    this.address = address;
+    this.registeredDate = registeredDate;
+    this.phono = photo
+  }
+}
+

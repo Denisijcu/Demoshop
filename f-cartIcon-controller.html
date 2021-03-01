@@ -1,0 +1,48 @@
+<script>
+
+/*   Cart  Functions */
+
+cartIcon.addEventListener('click', fnBuy, true);
+function fnBuy() {
+
+   document.getElementById('id01').style.display='block';
+
+      if (cart.length === 0){
+         document.getElementById('id01').innerHTML = '<p> No Items found!!! </p>';
+         document.getElementById('id01').style.display='none';
+         return;
+      }
+
+
+
+      let cartItem = `
+      <div class="w3-modal-content" style="top: 10%; width:50%; color: white; background:black; box-shadow: 4px 4px 4px #black">
+      <div class="w3-container w3-center w3-smoke">
+      <h1 class="w3-center"> Cart Item(s) </h1>
+      <br>
+      <table class="w3-table-all w3-centered w3-text-black"><th> Id </th><th> title </th><th> Price </th><th> Units </th><th> Amount</th>`;
+
+      cart.map(({ itemId, category, title, description, price, units, like, url,status }) =>{
+
+           cartItem +=`
+            
+               <tr><td>${itemId}</td><td>${title}</td><td>${price}</td><td>${units}</td><td>${(price*units)}</td></tr>
+
+               `;
+      });
+
+      cartItem +=`</table>
+        <div class="w3-section">
+        <button class="w3-button w3-black  wd"  onclick="document.getElementById('id01').style.display='none'" >Back</button>
+        <button class="w3-button w3-orange wd" onClick="fnCheckOut(cart)"> <i class="fa fa-card"></i>Check Out</button>
+      </div>
+      </div>
+      </div>`;
+
+      document.getElementById('id01').innerHTML = cartItem;
+}
+
+
+
+
+ </script>

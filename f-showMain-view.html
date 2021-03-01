@@ -1,0 +1,66 @@
+<script>
+  /* Views Seccion */
+
+function showView() {
+   let col = '<div  class="w3-col l3 s6">';
+   let sublevel = '';
+   let i = -1;
+
+   let gridCol = document.querySelector("#grid-col");  
+
+
+   itemsFilters.map(({ itemId, category, title, description,  price, units, like, url, status }) => {
+
+          
+
+           //let showCart = status ? "w3-display-container" : '';
+           let showCart = "w3-display-container";
+           //let showNew = status ? "w3-tag w3-display-topleft" : 'w3-hide';
+           let showNew = "w3-tag w3-display-topleft";
+
+            sublevel+= `
+            <div class="w3-container w3-margin-left w3-margin-bottom  w3-hover-shadow w3-card ${showCart}" style="height:330px;">
+
+               <img class="w3-padding-large " src="${url}" style="width: 100%; height:auto; cursor: 
+                     pointer" onclick="showDetail('${itemId}','${category}','${title}','${description}', '${price}', '${units}', '${like}', '${url}', '${status}')">
+ 
+               <p style="font-size:8px">${title}</p><br><b> ${price}</b></p>
+
+              
+
+               <span class="${showNew}">New</span>
+
+               <div class="w3-display-middle w3-display-hover">
+
+               <button class="w3-button w3-black"  
+                      onClick="addItem('${itemId}','${category}','${title}','${description}', '${price}', '${units}', '${like}', '${url}', '${status}')">
+                      Buy now <i class="fa fa-shopping-cart"></i></button>
+
+               </div>
+
+            </div>
+            `;
+
+            if( i% 2 === 0){
+
+               col+=sublevel;
+               col+='</div>';
+               col+='<div class="w3-col l3 s6">';
+               sublevel = '';
+            }
+
+      i++;
+
+   });
+
+   setTimeout(() => { document.querySelector("#loader").style.display="none"; }, 1500);
+
+   
+
+
+   
+   gridCol.innerHTML = col;
+
+   col = '';
+}
+</script>

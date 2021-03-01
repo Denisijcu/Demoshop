@@ -1,0 +1,31 @@
+<script>
+
+hideSearchInput = document.getElementById("hideSearchInput");
+// Hide label to show the search input 
+hideSearchInput.addEventListener('click', ()=>{ document.querySelector("#show_category").innerHTML = '';}, false);
+// Hide the Search Input 
+hideSearchInput.addEventListener('dblclick', ()=>{
+   document.getElementById("search").style.display = 'none';
+},false);
+
+let inputToSearch = document.querySelector("#inputToSearch");
+
+function onChangeValue(){
+   let w2s = inputToSearch.value.trim().toLowerCase();
+
+   itemsFilters = items.filter((items) => items.title.toLowerCase().substring(1,3) === w2s.substring(1,3));
+
+   if(itemsFilters.length === 0){
+
+      let alert = `<div class="w3-panel w3-red">
+                    <p style="font-size:12px;"> ${inputToSearch.value} no found !!!</p>
+                   </div>`;
+      document.getElementById('alert').innerHTML = alert; 
+      setTimeout(()=> document.getElementById('alert').innerHTML = '',3000);
+      return;
+   }
+
+   fnCat(itemsFilters[0].category);
+}
+
+</script>
